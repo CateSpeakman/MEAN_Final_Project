@@ -3,13 +3,12 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var hbs = require('hbs');
+
 var session = require('express-session');
 
-var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var leaguesRouter = require('./routes/leaguesRoute');
-var teamsRouter = require('./routes/teamsRoute');
+
 var app = express();
 
 // enable CORS
@@ -29,19 +28,10 @@ app.use(cors({
   credentials: true
 }));
 
-
-//register hbs partials
-hbs.registerPartials(__dirname + '/views/partials');
-
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'hbs');
-
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.use(session({
@@ -51,19 +41,11 @@ app.use(session({
 }));
 
 
-
-//http://localhost:3000
-app.use('/', indexRouter);
-
-//http://localhost:300/users
+//http://localhost:3000/users
 app.use('/users', usersRouter);
 
 //http://localhost:3000/leagues
 app.use('/leagues', leaguesRouter);
-
-
-//http://localhost:3000/teams
-app.use('/teams', teamsRouter)
 
 
 
