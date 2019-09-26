@@ -1,0 +1,22 @@
+[{
+        "username": "Cate",
+        "email": "cate@cate.com",
+        "password": "password",
+        "is_admin": 1
+        
+    },
+    {
+        "username": "Jonathan",
+        "email": "jonathan@jonjon.com",
+        "password": "password",
+        "is_admin": 0
+        
+    },
+    {
+        "username": "Adam",
+        "email": "adam@moosekins.com",
+        "password": "password",
+        "is_admin": 0
+        
+    }
+]

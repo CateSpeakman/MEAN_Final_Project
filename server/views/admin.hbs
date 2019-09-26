@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  {{>head}}
+</head>
+
+<body>
+  {{>nav}}
+
+  <h1>{{title}}</h1>
+<main>
+    <!--This section contains the table that will generate based off of the user selecting a league from the above
+dropdown or from selecting all teams-->
+        <section>
+            <div class="container" id="userListDiv">
+                <table class="table table-striped" id="userTable">
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Email</th>  
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+</main>
+  {{>scripts}}
+
+  <script src="/scripts/admin.js"></script>
+</body>
+
+</html>

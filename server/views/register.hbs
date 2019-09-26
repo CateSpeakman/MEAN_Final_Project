@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  {{>head}}
+</head>
+
+<body>
+  {{>nav}}
+
+
+  <h1>{{title}}</h1>
+
+
+  <div class="container">
+    <form class="form-login" id="form-login">
+
+      <h1 class="h3 mb-3 font-weight-normal">Register here</h1>
+
+      <label for="inputUserName" class="sr-only">User Name</label>
+      <input type="text" id="inputUserName" class="form-control col-4 mb-3" placeholder="Username" required autofocus />
+
+      <label for="inputPassword" class="sr-only">Password</label>
+      <input type="password" id="inputPassword" class="form-control col-4 mb-3" placeholder="Password" required />
+
+      <label for="inputConfirmPassword" class="sr-only"> Confirm Password</label>
+      <input type="password" id="inputConfirmPassword" class="form-control col-4 mb-3" placeholder=" Confirm Password"
+        required />
+
+      <label for="inputEmail" class="sr-only">Email Address</label>
+      <input type="email" id="inputEmail" class="form-control col-4 mb-3" placeholder="Email address" required
+        autofocus />
+
+      <button class="btn btn-lg btn-primary btn-block col-4" type="submit" id="registerBtn">Register</button>
+
+      <br />
+      <div class="alert alert-success hidden col-4" role="alert" id="msg"></div>
+
+  </div>
+
+  {{>scripts}}
+
+  <script src="/scripts/register.js"></script>
+</body>
+
+</html>
