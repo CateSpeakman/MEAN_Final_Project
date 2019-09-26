@@ -3,20 +3,6 @@ var userService = require('../services/userService');
 
 var UserController = {};
 
-// GET: http://localhost:3000/users/login
-UserController.login = (req, res) => {
-    res.render('login');
-};
-
-// GET: http://localhost:3000/users/register
-UserController.register = (req, res) => {
-    res.render('register');
-};
-
-// GET: http://localhost:3000/users/admin
-UserController.admin = (req, res) => {
-    res.render('admin');
-};
 
 // GET: http://localhost:3000/users/admin/data
 UserController.adminData = (req, res) => {
@@ -32,11 +18,6 @@ UserController.adminData = (req, res) => {
             console.log(`Listing Users error: ${err}`);
             res.json({ "error": "Listing Users error" });
         });
-};
-
-// GET: http://localhost:3000/users/update
-UserController.update = (req, res) => {
-    res.render('update');
 };
 
 
