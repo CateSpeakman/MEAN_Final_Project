@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
- import { User } from '../models/users.model';
+import { User } from '../models/users.model';
 
-// import { AuthService } from './../providers/auth.service';
+import { RegisterService } from './../providers/register.service';
 
 @Component({
   selector: 'app-users',
@@ -13,9 +13,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class RegisterComponent implements OnInit {
   title = 'Add User';
 
-  firstName: string = '';
-  lastName: string = '';
   email: string = '';
+  password: string = '';
 
   newUserAdded: boolean = false;
   addNewUser: boolean = false;
@@ -24,51 +23,51 @@ export class RegisterComponent implements OnInit {
   userName: string = '';
 
   // Array to hold User Objects
-   users: User[] = [];
+  users: User[] = [];
 
-   constructor(
-    // private authService: AuthService,
+  constructor(
+    private registerService: RegisterService,
     private route: ActivatedRoute,
     private router: Router) { }
 
 
   // executed when the Reset button is clicked
   onReset(): void {
-    this.firstName = '';
-    this.lastName = '';
+    this.userName = '';
     this.email = '';
+    this.password = '';
     this.newUserAdded = false;
   }
 
   // executed when Add User is clicked
-  // onAddUser(): void {
+  onAddUser(): void {
 
-  //   this.users = this.authService.addUser(this.firstName, this.lastName, this.email);
-  //   this.newUserAdded = true;
-  // }
+    this.users = this.registerService.addUser(this.userName, this.email, this.password);
+    this.newUserAdded = true;
+  }
 
-   getColor(): string {
+  getColor(): string {
     return this.newUserAdded === true ? '#000080' : '#FF0000'; // navy : red
-   }
+  }
 
 
   ngOnInit() {
     // get username from Query Params
     // Subscribe to Observable
     // pass anonymoue callback function to subscribe method
-  //   this.sub = this.route
-  //     .queryParams
-  //     .subscribe(params => {
-  //       this.userName = params['username'];
-  //     });
+    this.sub = this.route
+      .queryParams
+      .subscribe(params => {
+        this.userName = params['username'];
+      });
 
-  //     this.authService.getUsers().subscribe((data)  => {
-  //       this.users = data.users;
-  //     });
+    this.registerService.getUsers().subscribe((data) => {
+      this.users = data.users;
+    });
 
-   }
-  
-   onLogout() {
+  }
+
+  onLogout() {
     this.router.navigate(['/']);
   }
 }
