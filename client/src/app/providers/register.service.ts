@@ -20,10 +20,10 @@ export class RegisterService {
 
  constructor(private http: HttpClient) { }
  
-  // addUser(firstName:string, lastName:string, email:string){
-  //   this.users.push(new User(firstName, lastName, email));
-  //   return this.users;
-  // }
+  addUser(userName:string, email:string, password:string){
+    this.users.push(new User(userName, email, password));
+    return this.users;
+  }
 
   getUsers() : Observable<any> {
     return this.http.get(this.usersEndpoint, this.httpOptions)
