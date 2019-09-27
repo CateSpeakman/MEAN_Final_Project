@@ -9,6 +9,7 @@ import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { LeaguesComponent } from './leagues/leagues.component';
 
 
 
@@ -16,7 +17,8 @@ import { RegisterComponent } from './register/register.component';
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'register', component:RegisterComponent}
+  {path: 'register', component:RegisterComponent},
+  {path: 'leagues', component:LeaguesComponent}
 ];
 
 
@@ -27,7 +29,8 @@ const appRoutes: Routes = [
     HeaderComponent,
     HomeComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    LeaguesComponent
   ],
   imports: [
     BrowserModule,
