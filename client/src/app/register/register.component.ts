@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { RegisterService } from './../providers/register.service';
+
 
 import { User } from '../models/users.model';
-
-import { RegisterService } from './../providers/register.service';
 
 @Component({
   selector: 'app-users',
@@ -15,12 +15,14 @@ export class RegisterComponent implements OnInit {
 
   email: string = '';
   password: string = '';
-
   newUserAdded: boolean = false;
   addNewUser: boolean = false;
 
   sub: any;
   userName: string = '';
+
+  error: boolean = false;
+  errMsg: string = '';
 
   // Array to hold User Objects
   users: User[] = [];
@@ -29,7 +31,6 @@ export class RegisterComponent implements OnInit {
     private registerService: RegisterService,
     private route: ActivatedRoute,
     private router: Router) { }
-
 
   // executed when the Reset button is clicked
   onReset(): void {
@@ -42,14 +43,17 @@ export class RegisterComponent implements OnInit {
   // executed when Add User is clicked
   onAddUser(): void {
 
-    this.users = this.registerService.addUser(this.userName, this.email, this.password);
+    this.registerService.addUser(this.userName, this.email, this.password).subscribe(data => {
+      if (data['error']) {
+        this.errMsg = 'Registration unsuccessful.';
+        this.error = true;
+      } else {
+        this.router.navigate(['login']);
+      }
+    });
+
     this.newUserAdded = true;
   }
-
-  getColor(): string {
-    return this.newUserAdded === true ? '#000080' : '#FF0000'; // navy : red
-  }
-
 
   ngOnInit() {
     // get username from Query Params
@@ -59,15 +63,16 @@ export class RegisterComponent implements OnInit {
       .queryParams
       .subscribe(params => {
         this.userName = params['username'];
-      });
+      });//ends subscribe
 
     this.registerService.getUsers().subscribe((data) => {
       this.users = data.users;
-    });
+    });//ends get Users
 
-  }
+  }//ends 
 
   onLogout() {
     this.router.navigate(['/']);
   }
+
 }

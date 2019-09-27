@@ -15,14 +15,16 @@ export class RegisterService {
  private httpOptions = {
    headers: new HttpHeaders({
      'Content-Type':  'application/json'
-   })
+   }),
+
+   withCredentials:true
  };
 
  constructor(private http: HttpClient) { }
  
-  addUser(userName:string, email:string, password:string){
-    this.users.push(new User(userName, email, password));
-    return this.users;
+  addUser(username:string, email:string, password:string){
+    return this.http.post(this.usersEndpoint, {username : username, email : email, password : password}, this.httpOptions)
+    .pipe(map(res => <any[]>res));
   }
 
   getUsers() : Observable<any> {
