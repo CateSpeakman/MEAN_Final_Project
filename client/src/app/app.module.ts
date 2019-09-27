@@ -11,6 +11,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { LeaguesComponent } from './leagues/leagues.component';
 import { EditComponent } from './edit/edit.component';
+import { AdminComponent } from './admin/admin.component';
 
 
 
@@ -20,7 +21,8 @@ const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component:RegisterComponent},
   {path: 'leagues', component:LeaguesComponent},
-  {path: 'edit', component:EditComponent}
+  {path: 'edit', component:EditComponent},
+  {path: 'admin', component:AdminComponent}
 ];
 
 
@@ -33,7 +35,8 @@ const appRoutes: Routes = [
     LoginComponent,
     RegisterComponent,
     LeaguesComponent,
-    EditComponent
+    EditComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
