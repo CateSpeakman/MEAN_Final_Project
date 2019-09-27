@@ -7,23 +7,23 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" id="homeNav" href="/">Home </a>
+                <a class="nav-link" id="homeNav" (click)="goHome()">Home </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="login" href="/login">Login</a>
+                <a class="nav-link" id="login" (click)="goLogin()">Login</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="register" href="/register">Register</a>
+                <a class="nav-link" id="register" (click)="goRegister()">Register</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="leagues" href="/leagues">Search</a>
+                <a class="nav-link" id="leagues" (click)="goLeagues()">Search</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="admin" href="/admin">Admin</a>
+                <a class="nav-link" id="admin" (click)="goAdmin()">Admin</a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" id="profile" href="/edit">Profile</a>
+                <a class="nav-link" id="profile" (click)="goEdit()">Profile</a>
             </li>
         </ul>
         <img class="float-right" id="navpic" src="assets/images/boat1.jpg" alt="dragon boat">
