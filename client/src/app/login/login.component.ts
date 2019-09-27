@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
     if (this.loginService.login(this.userName, this.password)) {
       this.loginError = false;
       // load login "page"
-      this.router.navigate(['users'], {queryParams: {username: this.userName}});
+      this.router.navigate(['leagues'], {queryParams: {username: this.userName}});
     } else {
       this.loginError = true;
     }
