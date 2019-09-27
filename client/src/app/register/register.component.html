@@ -1,26 +1,60 @@
-<h1 class="h3 mb-3 font-weight-normal">Register here</h1>
-
 <div class="container">
-    <form class="form-login" id="form-login"> 
-
-        <label for="inputUserName" class="sr-only">User Name</label>
-        <input type="text" id="inputUserName" class="form-control col-4 mb-3" placeholder="Username" required
-            autofocus />
-
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" class="form-control col-4 mb-3" placeholder="Password" required />
-
-        <label for="inputConfirmPassword" class="sr-only"> Confirm Password</label>
-        <input type="password" id="inputConfirmPassword" class="form-control col-4 mb-3" placeholder=" Confirm Password"
-            required />
-
-        <label for="inputEmail" class="sr-only">Email Address</label>
-        <input type="email" id="inputEmail" class="form-control col-4 mb-3" placeholder="Email address" required
-            />
-
-        <button class="btn btn-lg btn-primary btn-block col-4" type="submit" id="registerBtn">Register</button>
-
-        <br />
-        <div class="alert alert-success hidden col-4" role="alert" id="msg"></div>
-    </form>
-</div>
+    <div class="form-group">
+      <label for="firstName">First Name</label>
+      <input type="text" class="form-control" id="firstName" placeholder="First Name" required autofocus
+        [(ngModel)]="firstName" />
+    </div>
+    <div class="form-group">
+      <label for="lastName">Last Name</label>
+      <input type="text" class="form-control" id="lastName" placeholder="Last Name" required [(ngModel)]="lastName" />
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" class="form-control" id="email" placeholder="email" [(ngModel)]="email" />
+    </div>
+    <div>
+      <!-- Property Binding: [ ] -->
+      <button type="button" class="btn btn-primary" (click)="onAddUser()">Add User</button>
+      <!-- Event Binding: ( ) -->
+      <button type="button" class="btn btn-primary ml-3" (click)="onReset()">Clear</button>
+    </div>
+  </div>
+  
+  <!-- Built-in structural (changes structure of DOM) *ngIf Directive: conditional expression returns true/false -->
+  <div class="container" id="usersDiv">
+    <hr />
+    <!-- Built-in ngStyle attribute directive: uses Property Binding [ ] to bind to a property of the directive -->
+    <h3 [ngStyle]="{color: getColor()}">Users</h3>
+        
+   
+      <!-- Built-in *ngFor directive -->
+     
+       <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users">
+            <td>{{user.firstName}}</td>
+            <td>{{user.lastName}}</td>
+            <td>{{user.email}}</td>
+          </tr>
+        </tbody>
+      </table>
+   
+    <!-- Create ng-template with local reference (#) to conditinally display -->
+    <ng-template #noUsers>No Users Added.</ng-template>
+  </div>
+  
+  
+  <div class="container">
+      <hr />
+      <h3>Users!</h3>
+      <ul>
+        <li *ngFor="let user of users">{{user.firstName}} - {{user.lastName}}'. {{user.email}}</li>
+      </ul>
+    </div>

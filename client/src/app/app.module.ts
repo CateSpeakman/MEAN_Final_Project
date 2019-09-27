@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { Routes, RouterModule }  from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -13,7 +14,8 @@ import { LeaguesComponent } from './leagues/leagues.component';
 import { EditComponent } from './edit/edit.component';
 import { AdminComponent } from './admin/admin.component';
 
-
+import { LoginService } from './providers/login.service';
+import { RegisterService } from './providers/register.service';
 
 
 const appRoutes: Routes = [
@@ -39,11 +41,15 @@ const appRoutes: Routes = [
     AdminComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     FormsModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: 
+  [LoginService,
+   RegisterService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

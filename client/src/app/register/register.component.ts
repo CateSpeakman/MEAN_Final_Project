@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
- import { User } from './users.model';
+ import { User } from '../models/users.model';
 
 // import { AuthService } from './../providers/auth.service';
 
@@ -66,10 +66,9 @@ export class RegisterComponent implements OnInit {
   //       this.users = data.users;
   //     });
 
-  // }
+   }
   
-  // onLogout() {
-  //   this.router.navigate(['/']);
-  // }
-}
+   onLogout() {
+    this.router.navigate(['/']);
+  }
 }
