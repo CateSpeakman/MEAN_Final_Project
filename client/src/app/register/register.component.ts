@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
-// import { User } from './users.model';
+ import { User } from './users.model';
 
 // import { AuthService } from './../providers/auth.service';
 
@@ -24,7 +24,7 @@ export class RegisterComponent implements OnInit {
   userName: string = '';
 
   // Array to hold User Objects
-  // users: User[] = [];
+   users: User[] = [];
 
    constructor(
     // private authService: AuthService,
