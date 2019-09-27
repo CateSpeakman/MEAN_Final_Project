@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { LeaguesComponent } from './leagues/leagues.component';
+import { EditComponent } from './edit/edit.component';
 
 
 
@@ -18,7 +19,8 @@ const appRoutes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component:RegisterComponent},
-  {path: 'leagues', component:LeaguesComponent}
+  {path: 'leagues', component:LeaguesComponent},
+  {path: 'edit', component:EditComponent}
 ];
 
 
@@ -30,7 +32,8 @@ const appRoutes: Routes = [
     HomeComponent,
     LoginComponent,
     RegisterComponent,
-    LeaguesComponent
+    LeaguesComponent,
+    EditComponent
   ],
   imports: [
     BrowserModule,
