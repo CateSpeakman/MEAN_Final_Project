@@ -15,13 +15,16 @@ export class LoginService {
 	private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type':  'application/json'
-    })
+    }),
+    
+    withCredentials:true
+
   };
 
   constructor(private http: HttpClient) { }
 
   login(userName: string, password: string) : Observable<any> {
-    return this.http.post(this.usersEndpoint, {user_name : userName, user_password : password}, this.httpOptions)
+    return this.http.post(this.usersEndpoint, {username : userName, password : password}, this.httpOptions)
       .pipe(map(res => <any[]>res));
   }
   
