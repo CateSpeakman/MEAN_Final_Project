@@ -16,6 +16,7 @@ import { AdminComponent } from './admin/admin.component';
 
 import { LoginService } from './providers/login.service';
 import { RegisterService } from './providers/register.service';
+import { EditService } from './providers/edit.service';
 
 
 const appRoutes: Routes = [
@@ -48,7 +49,8 @@ const appRoutes: Routes = [
   ],
   providers: 
   [LoginService,
-   RegisterService
+   RegisterService,
+   EditService
   ],
   bootstrap: [AppComponent]
 })
