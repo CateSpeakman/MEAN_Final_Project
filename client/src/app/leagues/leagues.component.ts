@@ -18,7 +18,7 @@ export class LeaguesComponent implements OnInit {
   ngOnInit() {
     this.leaguesService.getLeagues().subscribe((data) => {
       this.leagues = data;
-    });//ends getUser
+    });//ends getLeagues
 
 
   }
