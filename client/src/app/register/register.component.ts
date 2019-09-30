@@ -13,13 +13,14 @@ import { User } from '../models/users.model';
 export class RegisterComponent implements OnInit {
   title = 'Add User';
 
+  userName: string = '';
   email: string = '';
   password: string = '';
   newUserAdded: boolean = false;
   addNewUser: boolean = false;
 
   sub: any;
-  userName: string = '';
+ 
 
   error: boolean = false;
   errMsg: string = '';
