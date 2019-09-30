@@ -11,6 +11,10 @@ export class LoginService {
    USER_NAME: string = 'Admin';
    PASSWORD: string = 'password';
 
+   private userId: number = 0;
+   private isAuthenticated : boolean = false;
+   private isAdmin : boolean = false;
+
   private usersEndpoint: string = 'http://localhost:3000/users/login';
 	private httpOptions = {
     headers: new HttpHeaders({
@@ -26,6 +30,14 @@ export class LoginService {
   login(userName: string, password: string) : Observable<any> {
     return this.http.post(this.usersEndpoint, {username : userName, password : password}, this.httpOptions)
       .pipe(map(res => <any[]>res));
-  }
+    }
+
+    setUserId(id: number): void {
+      this.userId = id;
+    }
   
+    getUserId(): number {
+      return this.userId
+    }
+
 }

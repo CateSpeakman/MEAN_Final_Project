@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+
+import { LoginService } from './../providers/login.service';
 import { EditService } from './../providers/edit.service';
 
 import { User } from '../models/users.model';
@@ -18,25 +20,20 @@ export class EditComponent implements OnInit {
   sub: any;
 
   constructor(
+    private loginService: LoginService,
     private editService: EditService,
     private route: ActivatedRoute,
     private router: Router) { }
 
     ngOnInit() {
 
-    // get ID from Query Params
-    // Subscribe to Observable
-    // pass anonymoue callback function to subscribe method
-    this.sub = this.route
-      .queryParams
-      .subscribe(params => {
-        this.userid = params['ID'];
-      });//ends subscribe
+    this.editService.getUser(this.loginService.getUserId()).subscribe((data) => {
+      console.log(data);
+     
+       //this.user.push(new User(data.userName, data.email, data.password));
+       this.userName = data.username;
+       this.email = data.email;
 
-    this.editService.getUser(this.userid).subscribe((data) => {
-     data.forEach((user, index) => {
-       this.user.push(new User(user.userName, user.email, user.password));
-     })
     });//ends getUser
 
 
