@@ -15,7 +15,7 @@ export class EditService {
   user: [];
   sub: any;
 
- private usersEndpoint: string = 'http://localhost:3000/users/update/:id';
+ private usersEndpoint: string = 'http://localhost:3000/users/update/';
  private httpOptions = {
    headers: new HttpHeaders({
      'Content-Type':  'application/json'
@@ -28,7 +28,7 @@ export class EditService {
   constructor(private http: HttpClient) { }
 
   getUser(userid: number) : Observable<any> {
-    return this.http.get(`${this.usersEndpoint}${userid}${this.userName} ${this.email}`, this.httpOptions)
+    return this.http.get(`${this.usersEndpoint}${userid}`, this.httpOptions)
     .pipe(map(res=> <any[]>res));
   }
 

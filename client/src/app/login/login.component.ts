@@ -23,12 +23,14 @@ export class LoginComponent implements OnInit {
 
   onLogin(): void {
     // call login() method in AuthService to validate login creds
-    if (this.loginService.login(this.userName, this.password)) {
-      this.loginError = false;
-      // load login "page"
-      this.router.navigate(['leagues'], {queryParams: {username: this.userName}});
-    } else {
-      this.loginError = true;
-    }
+    this.loginService.login(this.userName, this.password).subscribe(data => {
+      if (data) {
+        this.loginService.setUserId(data.ID);
+        // load login "page"
+        this.router.navigate(['leagues'], {queryParams: {username: this.userName}});
+      } else {
+        // handle error here
+      }
+    });
   }
 }

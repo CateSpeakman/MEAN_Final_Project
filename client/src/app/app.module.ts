@@ -19,6 +19,7 @@ import { RegisterService } from './providers/register.service';
 import { EditService } from './providers/edit.service';
 
 
+
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'login', component: LoginComponent},
