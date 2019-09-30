@@ -10,21 +10,27 @@
                 <a class="nav-link" id="homeNav" (click)="goHome()">Home </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="login" (click)="goLogin()">Login</a>
+                <a class="nav-link" id="login" (click)="goLogin()" *ngIf="!isAuth()">Login</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="register" (click)="goRegister()">Register</a>
+                <a class="nav-link" id="register" (click)="goRegister()" *ngIf="!isAuth()">Register</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="leagues" (click)="goLeagues()">Search</a>
+                <a class="nav-link" id="leagues" (click)="goLeagues()" *ngIf="isAuth()">Search</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="admin" (click)="goAdmin()">Admin</a>
+                <a class="nav-link" id="admin" (click)="goAdmin()" *ngIf="isAuth() && isAdmin()">Admin</a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" id="profile" (click)="goEdit()">Profile</a>
+                <a class="nav-link" id="profile" (click)="goEdit()" *ngIf="isAuth()">Profile</a>
             </li>
+
+            <li class="nav-item">
+                    <a class="nav-link" id="profile" (click)="goLogout()" *ngIf="isAuth()">LogOut</a>
+                </li>
+
+
         </ul>
         <img class="float-right" id="navpic" src="assets/images/boat1.jpg" alt="dragon boat">
     </div>
