@@ -21,39 +21,34 @@ export class EditComponent implements OnInit {
 
   constructor(
     private loginService: LoginService,
-    private editService: EditService,
-    private route: ActivatedRoute,
+    private editService: EditService,    private route: ActivatedRoute,
     private router: Router) { }
 
-    ngOnInit() {
+  ngOnInit() {
 
     this.editService.getUser(this.loginService.getUserId()).subscribe((data) => {
-      console.log(data);
-     
-       //this.user.push(new User(data.userName, data.email, data.password));
-       this.userName = data.username;
-       this.email = data.email;
-
+      this.userName = data.username;
+      this.email = data.email;
+      this.userid = this.loginService.getUserId();
     });//ends getUser
-
 
   }//ends 
 
 
-onEdit(userId: number): void {
-  //call editUser() method in EditService to make changes to user info
-  this.editService.editUser(userId).subscribe(data => {
-    this.router.navigate(['edit']);
-  })
+  onEdit(): void {
+    //call editUser() method in EditService to make changes to user info
+    this.editService.editUser(this.email).subscribe(data => {
+      this.router.navigate(['edit']);
+    })
 
-}
+  }
 
- onDelete(userId: number): void {
-      // Call EditService to delete User
-      this.editService.deleteUser(userId).subscribe(data => {
-        this.router.navigate(['edit']);
-        
-      });
+  onDelete(userId: number): void {
+    // Call EditService to delete User
+    this.editService.deleteUser(userId).subscribe(data => {
+      this.router.navigate(['/']);
+
+    });
   }
 
 

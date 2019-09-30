@@ -80,14 +80,15 @@ UserController.postLogin = (req, res) => {
 UserController.putUpdate = (req, res) => {
     userService.update({
         id: req.body.id,
-        user_name: req.body.userName,
+        username: req.body.userName,
         email: req.body.email
-
     })
         .then((user) => {
+            console.log(1);
             res.json(user);
         })
         .catch((err) => {
+            console.log(2);
             console.log(`Updating User error: ${err}`);
             res.end('Updating User error.');
         });
