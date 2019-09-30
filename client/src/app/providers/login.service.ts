@@ -8,36 +8,51 @@ import { map } from 'rxjs/operators';
 })
 export class LoginService {
   // // Hard-coded for demo purposes
-   USER_NAME: string = 'Admin';
-   PASSWORD: string = 'password';
-
-   private userId: number = 0;
-   private isAuthenticated : boolean = false;
-   private isAdmin : boolean = false;
+  private userId: number = 0;
+  private isAuthenticated: boolean = false;
+  private isAdmin: boolean = false;
 
   private usersEndpoint: string = 'http://localhost:3000/users/login';
-	private httpOptions = {
+  private httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type':  'application/json'
+      'Content-Type': 'application/json'
     }),
-    
-    withCredentials:true
+
+    withCredentials: true
 
   };
 
   constructor(private http: HttpClient) { }
 
-  login(userName: string, password: string) : Observable<any> {
-    return this.http.post(this.usersEndpoint, {username : userName, password : password}, this.httpOptions)
+  login(userName: string, password: string): Observable<any> {
+    return this.http.post(this.usersEndpoint, { username: userName, password: password }, this.httpOptions)
       .pipe(map(res => <any[]>res));
-    }
+  }
 
-    setUserId(id: number): void {
-      this.userId = id;
-    }
-  
-    getUserId(): number {
-      return this.userId
-    }
+  setUserId(id: number): void {
+    this.userId = id;
+  }
+
+  getUserId(): number {
+    return this.userId
+  }
+
+  setAuth(isAuth: boolean): void {
+    this.isAuthenticated = isAuth;
+  }
+
+  getAuth(): boolean {
+    return this.isAuthenticated;
+  }
+
+  setAdmin(isAdmin: boolean): void {
+    this.isAdmin = isAdmin;
+  }
+
+  getAdmin(): boolean {
+    return this.isAdmin;
+  }
+
+
 
 }

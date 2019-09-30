@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { LoginService } from './../providers/login.service';
+
+
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
@@ -32,9 +35,23 @@ export class NavComponent implements OnInit {
     this.router.navigate (['edit']);
   }
 
-  constructor(private router: Router) { }
+  constructor(
+    private loginService: LoginService,
+    private router: Router) { }
 
   ngOnInit() {
   }
+isAuth(): boolean{
+  return this.loginService.getAuth();
+}
 
+isAdmin(): boolean{
+  return this.loginService.getAdmin();
+}
+
+goLogout(){
+  this.loginService.setAuth(false);
+  this.loginService.setAdmin(false);
+  this.router.navigate (['/']);
+}
 }
