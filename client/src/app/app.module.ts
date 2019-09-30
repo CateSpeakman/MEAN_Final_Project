@@ -18,6 +18,8 @@ import { LoginService } from './providers/login.service';
 import { RegisterService } from './providers/register.service';
 import { EditService } from './providers/edit.service';
 import { LeaguesService } from './providers/leagues.service';
+import { AdminService } from './providers/admin.service';
+
 
 
 
@@ -53,7 +55,8 @@ const appRoutes: Routes = [
   [LoginService,
    RegisterService,
    EditService,
-   LeaguesService
+   LeaguesService,
+   AdminService
   ],
   bootstrap: [AppComponent]
 })

@@ -12,6 +12,7 @@ dropdown or from selecting all teams-->
                         </tr>
                     </thead>
                     <tbody>
+                        <tr *ngFor="let user of users"><td>{{user.username}}</td>{{user.email}} </tr>
                     </tbody>
                 </table>
             </div>
