@@ -8,8 +8,12 @@ import { map } from 'rxjs/operators';
 })
 
 export class EditService {
-  users: User[] = [];
-  username: 
+  
+  userName: string = '';
+  email: string = '';
+  userid: number;
+  user: [];
+  sub: any;
 
  private usersEndpoint: string = 'http://localhost:3000/users/update/:id';
  private httpOptions = {
@@ -21,22 +25,20 @@ export class EditService {
  };
 
 
-
-
   constructor(private http: HttpClient) { }
 
-  getUser(userId: number){
-    return this.http.get(`$this.usersEndpoint}${username} ${email}`, this.httpOptions)
+  getUser(userid: number) : Observable<any> {
+    return this.http.get(`${this.usersEndpoint}${userid}${this.userName} ${this.email}`, this.httpOptions)
     .pipe(map(res=> <any[]>res));
   }
 
-  editUser(userId: number){
-    return this.http.put(`${this.usersEndpoint}${email}`, this.httpOptions)
+  editUser(userid: number) : Observable<any>{
+    return this.http.put(`${this.usersEndpoint}${userid} ${this.email}`, this.httpOptions)
     .pipe(map(res => <any[]>res));
   }
 
-  deleteUser(userId: number) {
-    return this.http.delete(`${this.usersEndpoint}${userId}`, this.httpOptions)
+  deleteUser(userid: number) : Observable<any> {
+    return this.http.delete(`${this.usersEndpoint}${userid}`, this.httpOptions)
       .pipe(map(res => <any[]>res));
   }
 }

@@ -2,9 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { EditService } from './../providers/edit.service';
 
-
-
-
+import { User } from '../models/users.model';
 
 @Component({
   selector: 'app-edit',
@@ -13,23 +11,20 @@ import { EditService } from './../providers/edit.service';
 })
 export class EditComponent implements OnInit {
 
+  userName: string = '';
+  email: string = '';
+  userid: number;
+  user: Array<User> = [];
+  sub: any;
+
   constructor(
     private editService: EditService,
     private route: ActivatedRoute,
     private router: Router) { }
 
-  userName: string = '';
-  email: string = '';
-  userid: number;
-  user: [];
-  sub: any;
+    ngOnInit() {
 
-
-
-
-  ngOnInit() {
-
-    // get username from Query Params
+    // get ID from Query Params
     // Subscribe to Observable
     // pass anonymoue callback function to subscribe method
     this.sub = this.route
@@ -38,11 +33,31 @@ export class EditComponent implements OnInit {
         this.userid = params['ID'];
       });//ends subscribe
 
-    this.editService.getUser().subscribe((data) => {
-      this.user = data.user;
-    });//ends get Users
+    this.editService.getUser(this.userid).subscribe((data) => {
+     data.forEach((user, index) => {
+       this.user.push(new User(user.userName, user.email, user.password));
+     })
+    });//ends getUser
 
 
   }//ends 
+
+
+onEdit(userId: number): void {
+  //call editUser() method in EditService to make changes to user info
+  this.editService.editUser(userId).subscribe(data => {
+    this.router.navigate(['edit']);
+  })
+
+}
+
+ onDelete(userId: number): void {
+      // Call EditService to delete User
+      this.editService.deleteUser(userId).subscribe(data => {
+        this.router.navigate(['edit']);
+        
+      });
+  }
+
 
 }
