@@ -11,6 +11,8 @@ import { LeaguesService } from './../providers/leagues.service';
 export class LeaguesComponent implements OnInit {
   private leagues: Array<any> = [];
 
+  allTeamsBtn: boolean = true;
+
   constructor( private route: ActivatedRoute,
     private router: Router,
     private leaguesService: LeaguesService) { }
