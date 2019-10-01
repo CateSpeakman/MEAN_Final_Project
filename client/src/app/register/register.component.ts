@@ -72,8 +72,5 @@ export class RegisterComponent implements OnInit {
 
   }//ends 
 
-  onLogout() {
-    this.router.navigate(['/']);
-  }
-
+  
 }

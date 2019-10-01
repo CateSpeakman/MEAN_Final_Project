@@ -15,15 +15,16 @@ See demo code.
 
 ## Create PostgreSQL User and DB
 + username: hca
-+ password: password
-+ creds: DBA
-+ db name: demo
++ password: hca
++ creds: hca
++ db name: hca
 
 
 ## Migrate DB
 ```
 $ cd server\db
 $ node migrate
+$ node seed
 ```
 
 
@@ -37,7 +38,7 @@ $ npm start
 
 ## Test Server
 - Use Postman Collection
-- [HBS](http://localhost:3000/)
+- (http://localhost:3000/)
 
 
 ## Create a new Angular App
@@ -45,16 +46,12 @@ $ npm start
 $ ng new client
 ```
 
-See demo code.
-
-
 ## Serve Client
 ```
 $ cd client
 $ npm install
 $ ng serve
 ```
-
 
 ## Test Client
 - [Angular](http://localhost:4200/)
