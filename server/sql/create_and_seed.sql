@@ -15,5 +15,16 @@ create table USER (
 );
 
 INSERT INTO User (username, email, password, is_admin, createdAt, updatedAt) VALUES ('Admin', 'admin@test.com', 'password', 1);
+INSERT INTO User (username, email, password, is_admin, createdAt, updatedAt) VALUES ('Cate', 'cate@cate.com', 'password', 1);
+INSERT INTO User (username, email, password, is_admin, createdAt, updatedAt) VALUES ('Dad', 'dad@dad.com', 'password', 0);
 
-select * from user;
+
+SELECT * FROM user;
+SELECT * FROM user WHERE ID = 1;
+SELECT * FROM user WHERE username ='Cate';
+
+UPDATE user SET email ='dad@vermont.com' WHERE username = 'Dad';
+
+DELETE FROM user WHERE username = "Admin";
+
+
