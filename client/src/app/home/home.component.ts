@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-home',
@@ -7,7 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
+
+  onSearch(): void {
+    //on click event from home screen to route to Login page before allowing
+    // user to go to search page
+          this.router.navigate(['login']);
+  }
 
   ngOnInit() {
   }
