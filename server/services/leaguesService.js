@@ -2,6 +2,8 @@ var fs = require('fs');
 
 var leaguesService = {};
 
+//this service will send back the leagues information from a JSON file and return data
+
 leaguesService.leaguesData = (req, res) => {
 
     try {

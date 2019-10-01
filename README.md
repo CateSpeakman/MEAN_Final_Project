@@ -1,7 +1,17 @@
 ### App
 
+## Harvey Lake Dragon Boats
 
-Note: This example uses [PostgreSQL](https://www.postgresql.org/) in place of [MongoDB](https://www.mongodb.com/) for a Database. 
+This is the client and server of the final project for Hartcode Academy. This application
+will allow a user to do the following:
++ register a new user
++ log in an existing user
++ edit email on existing user
++ naviagate to a landing page as an authenticated user to view a dropdown of dragon baot leagues
+to choose from
++ allow a user who has admin rights to navigate to the admin page and view all users who do not have rights.  
+
+Note: This application uses [PostgreSQL](https://www.postgresql.org/) for a Database. 
 
 
 ## Create a new Express App
@@ -11,12 +21,10 @@ $ cd server
 $ npm install body-parser pg pg-hstore sequelize -save
 ```
 
-See demo code.
-
 ## Create PostgreSQL User and DB
 + username: hca
-+ password: hca
-+ creds: hca
++ password: password
++ creds: DBA
 + db name: hca
 
 

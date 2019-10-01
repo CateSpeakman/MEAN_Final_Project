@@ -107,5 +107,4 @@ UserController.delete = (req, res) => {
 };
 
 
-
 module.exports = UserController;
