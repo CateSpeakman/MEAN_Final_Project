@@ -5,6 +5,7 @@ const User = require('../db/connection').User;
 
 var userService = {};
 
+//this service will post a new user to the database
 userService.postRegister = (userObj) => {
     console.log(userObj);
     return User
@@ -17,7 +18,7 @@ userService.postRegister = (userObj) => {
         })
 };
 
-
+//this service will call the database when a user attempts to log in
 userService.postLogin = (userObj) => {
        return User.findOne({
                where: userObj
@@ -30,7 +31,7 @@ userService.postLogin = (userObj) => {
         })
 };
 
-
+//this service will find and send back all users that are non admins
 userService.listUsers = () => {
     return User.findAll({ where: { is_admin: 0 }})
         .then(users => {
@@ -41,7 +42,7 @@ userService.listUsers = () => {
         })
 };
 
-
+//this service will update a users email
 userService.update = (userObj) => {
     return User.update({ user_name: userObj.user_name, email: userObj.email }, { where: { ID: userObj.id } })
         .then(user => {
@@ -52,7 +53,7 @@ userService.update = (userObj) => {
         })
 };
 
-
+//this service will find a user within the database based on their user id
 userService.listUser = (userId) => {
     return User.findByPk(userId)
         .then(user => {
@@ -64,8 +65,7 @@ userService.listUser = (userId) => {
 };
 
 
-
-
+//this service will delete a user based on the user id that was sent from the front end
 userService.delete = (userId) => {
    
     return User.destroy({ where: { ID: userId } })
